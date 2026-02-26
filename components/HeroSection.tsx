@@ -52,7 +52,7 @@ export default function HeroSection() {
                         }}
                     >
                         <span className="pulse-dot" />
-                        <span className="label">Now accepting early access</span>
+                        <span className="label">Launching April 2026 — join the waitlist</span>
                     </div>
                 </motion.div>
 
@@ -104,7 +104,7 @@ export default function HeroSection() {
                     }}
                 >
                     <a href="#waitlist" className="btn-primary">
-                        Get Early Access
+                        Join Our Waitlist
                         <ArrowRight size={15} />
                     </a>
                     <a href="#how-it-works" className="btn-ghost">

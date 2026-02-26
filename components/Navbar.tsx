@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 
 const navLinks = [
     { label: "How It Works", href: "#how-it-works" },
+    { label: "Performance", href: "#performance" },
     { label: "Features", href: "#features" },
 ];
 
@@ -98,7 +99,7 @@ export default function Navbar() {
                         className="btn-primary"
                         style={{ padding: "10px 24px", fontSize: 11 }}
                     >
-                        Early Access
+                        Join Waitlist
                     </a>
                 </div>
 

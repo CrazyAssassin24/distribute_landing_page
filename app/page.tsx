@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import VideoSection from "@/components/VideoSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
+import PerformanceSection from "@/components/PerformanceSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import WaitlistSection from "@/components/WaitlistSection";
 import Footer from "@/components/Footer";
@@ -47,6 +48,7 @@ export default function Home() {
         <HeroSection />
         <VideoSection />
         <HowItWorksSection />
+        <PerformanceSection />
         <FeaturesSection />
         <WaitlistSection />
         <Footer />

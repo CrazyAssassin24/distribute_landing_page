@@ -1,8 +1,100 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { CheckCircle2, ArrowRight, Loader2, Cpu, Server } from "lucide-react";
+
+const LAUNCH_DATE = new Date("2026-04-26T00:00:00Z");
+
+function useCountdown(target: Date) {
+    const calc = () => {
+        const diff = Math.max(0, target.getTime() - Date.now());
+        return {
+            days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+            hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+            minutes: Math.floor((diff / (1000 * 60)) % 60),
+            seconds: Math.floor((diff / 1000) % 60),
+        };
+    };
+    const [time, setTime] = useState(calc);
+    useEffect(() => {
+        const id = setInterval(() => setTime(calc()), 1000);
+        return () => clearInterval(id);
+    }, []);
+    return time;
+}
+
+function CountdownUnit({ value, label }: { value: number; label: string }) {
+    return (
+        <div style={{ textAlign: "center", minWidth: 64 }}>
+            <div
+                style={{
+                    fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
+                    fontFamily: "'Instrument Serif', serif",
+                    fontWeight: 400,
+                    color: "var(--accent)",
+                    lineHeight: 1,
+                    marginBottom: 8,
+                }}
+            >
+                {String(value).padStart(2, "0")}
+            </div>
+            <div
+                style={{
+                    fontSize: 10,
+                    fontWeight: 500,
+                    letterSpacing: "0.16em",
+                    textTransform: "uppercase",
+                    color: "var(--text-muted)",
+                }}
+            >
+                {label}
+            </div>
+        </div>
+    );
+}
+
+function CountdownTimer() {
+    const { days, hours, minutes, seconds } = useCountdown(LAUNCH_DATE);
+    const sep = (
+        <span
+            style={{
+                fontSize: "clamp(1.4rem, 3vw, 2rem)",
+                fontFamily: "'Instrument Serif', serif",
+                color: "var(--accent)",
+                opacity: 0.35,
+                alignSelf: "flex-start",
+                paddingTop: 2,
+                lineHeight: 1,
+            }}
+        >
+            :
+        </span>
+    );
+    return (
+        <div
+            style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 12,
+                padding: "20px 40px",
+                border: "1px solid var(--accent-border)",
+                background: "rgba(201,185,122,0.03)",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                marginBottom: 0,
+            }}
+        >
+            <CountdownUnit value={days} label="Days" />
+            {sep}
+            <CountdownUnit value={hours} label="Hours" />
+            {sep}
+            <CountdownUnit value={minutes} label="Minutes" />
+            {sep}
+            <CountdownUnit value={seconds} label="Seconds" />
+        </div>
+    );
+}
 
 const fadeUp = {
     initial: { opacity: 0, y: 24 },
@@ -56,6 +148,8 @@ function WaitlistCard({
                 minWidth: 300,
                 maxWidth: 500,
                 padding: "40px 36px",
+                display: "flex",
+                flexDirection: "column",
             }}
         >
             {/* Header */}
@@ -92,7 +186,7 @@ function WaitlistCard({
             </div>
 
             {/* Perks */}
-            <ul style={{ listStyle: "none", marginBottom: 32 }}>
+            <ul style={{ listStyle: "none", marginBottom: 32, flex: 1 }}>
                 {perks.map((perk) => (
                     <li
                         key={perk}
@@ -198,7 +292,7 @@ export default function WaitlistSection() {
                     {...fadeUp}
                     style={{ textAlign: "center", paddingTop: 80, marginBottom: 72 }}
                 >
-                    <div className="label" style={{ marginBottom: 20 }}>Early Access</div>
+                    <div className="label" style={{ marginBottom: 20 }}>Waitlist</div>
                     <h2
                         style={{
                             fontSize: "clamp(2rem, 4.5vw, 3.2rem)",
@@ -207,21 +301,24 @@ export default function WaitlistSection() {
                             lineHeight: 1.1,
                         }}
                     >
-                        Join the{" "}
-                        <em style={{ fontStyle: "italic", color: "var(--accent)" }}>waitlist.</em>
+                        Be the first to know{" "}
+                        <em style={{ fontStyle: "italic", color: "var(--accent)" }}>when we launch.</em>
                     </h2>
                     <p
                         style={{
                             fontSize: 15,
                             color: "var(--text-secondary)",
                             maxWidth: 480,
-                            margin: "0 auto",
+                            margin: "0 auto 48px",
                             lineHeight: 1.75,
                             fontWeight: 300,
                         }}
                     >
-                        Join our foundation cohort. Early adopters receive exclusive lifetime benefits, zero-fee trading for 12 months, and priority support.
+                        Join the waitlist and get notified the moment Distribute goes live. Early members unlock exclusive lifetime benefits and priority access.
                     </p>
+
+                    {/* Countdown */}
+                    <CountdownTimer />
                 </motion.div>
 
                 {/* Cards */}
@@ -231,32 +328,33 @@ export default function WaitlistSection() {
                         gap: 24,
                         justifyContent: "center",
                         flexWrap: "wrap",
+                        alignItems: "stretch",
                     }}
                 >
                     <WaitlistCard
                         id="waitlist-client"
                         role="client"
                         icon={Cpu}
-                        title="I Need Power"
-                        subtitle="Rent GPUs for training or rendering on a minimal budget."
+                        title="I want GPU power"
+                        subtitle="Run AI models, fine-tune LLMs, and render projects — without paying AWS prices."
                         perks={[
-                            "0% platform fees for your first 12 months",
-                            "Free tier priority for high-demand nodes",
-                            "Exclusive 'Founding Client' profile badge",
-                            "Locked-in early adopter rates for life",
+                            "No platform fees for your entire first year — keep every rupee you save",
+                            "Jump the queue — early members get first pick of the best GPUs at launch",
+                            "Your price is locked in forever, even as demand grows",
+                            "Cancel any session instantly — you only pay for the seconds you actually use",
                         ]}
                     />
                     <WaitlistCard
                         id="waitlist-provider"
                         role="provider"
                         icon={Server}
-                        title="I Have a PC"
-                        subtitle="Turn your idle GPU/CPU into passive income today."
+                        title="I have a gaming PC"
+                        subtitle="Your GPU sits idle most of the day. Let it earn money while you sleep, game, or study."
                         perks={[
-                            "Double earning multipliers for launch month",
-                            "Instant UPI payouts with zero withdrawal fees",
-                            "Complimentary hardware health audit service",
-                            "Priority listing in the global directory",
+                            "Earn 2× the normal rate during the entire launch month",
+                            "Get paid instantly to your UPI — no waiting, no minimum withdrawal",
+                            "We handle all the networking and security — you just leave it on",
+                            "Your listing appears at the top of search results before anyone else's",
                         ]}
                     />
                 </div>
