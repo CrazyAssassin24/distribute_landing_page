@@ -2,12 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Zap, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
     { label: "How It Works", href: "#how-it-works" },
     { label: "Features", href: "#features" },
-    { label: "Join Waitlist", href: "#waitlist" },
 ];
 
 export default function Navbar() {
@@ -25,53 +24,40 @@ export default function Navbar() {
             <motion.nav
                 initial={{ y: -80, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
                 style={{
                     position: "fixed",
                     top: 0,
                     left: 0,
                     right: 0,
                     zIndex: 100,
-                    padding: "0 24px",
-                    height: 68,
+                    padding: "0 40px",
+                    height: 64,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
                     background: scrolled
-                        ? "rgba(3, 7, 18, 0.85)"
+                        ? "rgba(6, 5, 10, 0.92)"
                         : "transparent",
-                    backdropFilter: scrolled ? "blur(20px)" : "none",
+                    backdropFilter: scrolled ? "blur(24px)" : "none",
                     borderBottom: scrolled
                         ? "1px solid rgba(255,255,255,0.06)"
                         : "none",
                     transition: "all 0.4s ease",
-                    maxWidth: "100vw",
                 }}
             >
                 {/* Logo */}
-                <a href="#" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
-                    <div
-                        style={{
-                            width: 36,
-                            height: 36,
-                            borderRadius: 10,
-                            background: "linear-gradient(135deg, #3b82f6, #7c3aed)",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                        }}
-                    >
-                        <Zap size={18} color="white" fill="white" />
-                    </div>
+                <a href="#" style={{ display: "flex", alignItems: "center", gap: 0, textDecoration: "none" }}>
                     <span
                         style={{
-                            fontFamily: "'Space Grotesk', sans-serif",
-                            fontWeight: 700,
-                            fontSize: 20,
-                            color: "#f8fafc",
+                            fontFamily: "'Instrument Serif', serif",
+                            fontWeight: 400,
+                            fontSize: 22,
+                            letterSpacing: "0.04em",
+                            color: "#f0ede8",
                         }}
                     >
-                        Compute<span className="gradient-text">Link</span>
+                        distribute
                     </span>
                 </a>
 
@@ -80,7 +66,7 @@ export default function Navbar() {
                     style={{
                         display: "flex",
                         alignItems: "center",
-                        gap: 32,
+                        gap: 40,
                     }}
                     className="desktop-nav"
                 >
@@ -91,16 +77,17 @@ export default function Navbar() {
                             style={{
                                 color: "var(--text-secondary)",
                                 textDecoration: "none",
-                                fontSize: 14,
+                                fontSize: 11,
                                 fontWeight: 500,
+                                letterSpacing: "0.12em",
+                                textTransform: "uppercase",
                                 transition: "color 0.2s",
                             }}
                             onMouseEnter={(e) =>
                                 ((e.target as HTMLElement).style.color = "var(--text-primary)")
                             }
                             onMouseLeave={(e) =>
-                            ((e.target as HTMLElement).style.color =
-                                "var(--text-secondary)")
+                                ((e.target as HTMLElement).style.color = "var(--text-secondary)")
                             }
                         >
                             {link.label}
@@ -109,9 +96,9 @@ export default function Navbar() {
                     <a
                         href="#waitlist"
                         className="btn-primary"
-                        style={{ padding: "10px 20px", fontSize: 13, borderRadius: 10, textDecoration: "none" }}
+                        style={{ padding: "10px 24px", fontSize: 11 }}
                     >
-                        Join Waitlist
+                        Early Access
                     </a>
                 </div>
 
@@ -121,14 +108,14 @@ export default function Navbar() {
                     style={{
                         background: "none",
                         border: "none",
-                        color: "white",
+                        color: "var(--text-secondary)",
                         cursor: "pointer",
                         display: "none",
                     }}
                     className="mobile-menu-btn"
                     aria-label="Toggle menu"
                 >
-                    {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+                    {mobileOpen ? <X size={22} /> : <Menu size={22} />}
                 </button>
             </motion.nav>
 
@@ -136,19 +123,19 @@ export default function Navbar() {
             <AnimatePresence>
                 {mobileOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
+                        initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
+                        exit={{ opacity: 0, y: -10 }}
                         style={{
                             position: "fixed",
-                            top: 68,
+                            top: 64,
                             left: 0,
                             right: 0,
                             zIndex: 99,
-                            background: "rgba(3, 7, 18, 0.97)",
+                            background: "rgba(6, 5, 10, 0.98)",
                             borderBottom: "1px solid rgba(255,255,255,0.06)",
-                            padding: "20px 24px",
-                            backdropFilter: "blur(20px)",
+                            padding: "24px 40px",
+                            backdropFilter: "blur(24px)",
                         }}
                     >
                         {navLinks.map((link) => (
@@ -160,9 +147,11 @@ export default function Navbar() {
                                     display: "block",
                                     color: "var(--text-secondary)",
                                     textDecoration: "none",
-                                    fontSize: 16,
+                                    fontSize: 11,
                                     fontWeight: 500,
-                                    padding: "12px 0",
+                                    letterSpacing: "0.12em",
+                                    textTransform: "uppercase",
+                                    padding: "14px 0",
                                     borderBottom: "1px solid var(--border)",
                                 }}
                             >

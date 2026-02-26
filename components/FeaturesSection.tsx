@@ -1,51 +1,45 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Zap, ShieldCheck, Globe, DollarSign, Clock, BarChart3 } from "lucide-react";
+import { Wallet, ShieldCheck, Network, Server, Code2, Bot } from "lucide-react";
 
 const features = [
     {
-        icon: Zap,
-        color: "#3b82f6",
-        title: "Instant Provisioning",
-        desc: "Access compute resources in under 60 seconds. No contracts, no waiting — capacity fires up the moment you need it.",
+        icon: Bot,
+        title: "One-Click Onboarding",
+        desc: "Install the agent and connect instantly. No manual setup, networking, or configuration required.",
     },
     {
-        icon: DollarSign,
-        color: "#22c55e",
-        title: "Up to 73% Cost Savings",
-        desc: "Pay only for what you use, at prices set by competitive market forces — not by hyperscaler pricing committees.",
+        icon: Network,
+        title: "Instant Global GPU Access",
+        desc: "Securely access GPUs worldwide in seconds, without relying on centralized cloud providers.",
     },
     {
         icon: ShieldCheck,
-        color: "#7c3aed",
-        title: "End-to-End Security",
-        desc: "All workloads run in isolated, encrypted environments. Your data and models never leave your control.",
+        title: "Secure VM Isolation",
+        desc: "Every workload runs inside dedicated isolated virtual machines, protecting both users and providers.",
     },
     {
-        icon: Globe,
-        color: "#06b6d4",
-        title: "Global Provider Network",
-        desc: "Tap into a distributed network of vetted compute providers across 30+ countries for low-latency access anywhere.",
+        icon: Wallet,
+        title: "Fair Marketplace Economics",
+        desc: "Affordable compute for users and transparent, instant payouts for providers contributing hardware.",
     },
     {
-        icon: Clock,
-        color: "#f59e0b",
-        title: "Flexible On-Demand Scaling",
-        desc: "Burst from 1 GPU to 1,000 in minutes. Scale down when done — no overprovisioning, no idle costs.",
+        icon: Server,
+        title: "Monetize any hardware",
+        desc: "Turn your gaming PC, office laptop, or old workstation into a revenue stream. Every GPU counts.",
     },
     {
-        icon: BarChart3,
-        color: "#ec4899",
-        title: "Unified Dashboard",
-        desc: "Monitor usage, costs, and performance across all your workloads in one real-time analytics dashboard.",
+        icon: Code2,
+        title: "Developer-First Experience",
+        desc: "SSH into machines instantly and use familiar tools like VS Code, Jupyter, and existing workflows.",
     },
 ];
 
 const fadeUp = {
-    initial: { opacity: 0, y: 30 },
+    initial: { opacity: 0, y: 24 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-50px" },
+    viewport: { once: true, margin: "-40px" },
 };
 
 export default function FeaturesSection() {
@@ -53,55 +47,40 @@ export default function FeaturesSection() {
         <section
             id="features"
             className="section-padding"
-            style={{
-                background: "linear-gradient(180deg, var(--bg-primary) 0%, rgba(10,15,30,0.6) 100%)",
-                position: "relative",
-            }}
+            style={{ position: "relative" }}
         >
-            {/* Radial glow */}
-            <div
-                style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    width: 600,
-                    height: 600,
-                    background: "radial-gradient(ellipse, rgba(124, 58, 237, 0.06) 0%, transparent 70%)",
-                    pointerEvents: "none",
-                }}
-            />
+            <div className="divider" style={{ marginBottom: 0 }} />
 
-            <div className="container-xl" style={{ position: "relative", zIndex: 1 }}>
+            <div className="container-xl">
+                {/* Header */}
                 <motion.div
                     {...fadeUp}
-                    transition={{ duration: 0.6 }}
-                    style={{ textAlign: "center", marginBottom: 64 }}
+                    transition={{ duration: 0.7 }}
+                    style={{ textAlign: "center", paddingTop: 80, marginBottom: 72 }}
                 >
-                    <div className="badge" style={{ display: "inline-flex" }}>
-                        ⚡ Platform capabilities
-                    </div>
+                    <div className="label" style={{ marginBottom: 20 }}>Platform</div>
                     <h2
                         style={{
-                            fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
-                            fontWeight: 800,
-                            marginBottom: 16,
+                            fontSize: "clamp(2rem, 4.5vw, 3.2rem)",
+                            fontWeight: 400,
+                            marginBottom: 20,
+                            lineHeight: 1.1,
                         }}
                     >
                         Everything you need,{" "}
-                        <span className="gradient-text-cyan">nothing you don&apos;t</span>
+                        <em style={{ fontStyle: "italic", color: "var(--accent)" }}>nothing you don&apos;t.</em>
                     </h2>
                     <p
                         style={{
-                            fontSize: 17,
+                            fontSize: 15,
                             color: "var(--text-secondary)",
-                            maxWidth: 500,
+                            maxWidth: 440,
                             margin: "0 auto",
-                            lineHeight: 1.7,
+                            lineHeight: 1.75,
+                            fontWeight: 300,
                         }}
                     >
-                        ComputeLink is engineered for both sides of the marketplace —
-                        rigorous infrastructure for providers, frictionless UX for clients.
+                        Built for both sides of the marketplace — rigorous for providers, frictionless for clients.
                     </p>
                 </motion.div>
 
@@ -109,49 +88,53 @@ export default function FeaturesSection() {
                 <div
                     style={{
                         display: "grid",
-                        gridTemplateColumns: "repeat(auto-fit, minmax(310px, 1fr))",
-                        gap: 24,
+                        gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+                        gap: 1,
+                        border: "1px solid var(--border)",
                     }}
                 >
                     {features.map((feat, i) => (
                         <motion.div
                             key={feat.title}
-                            className="glass-card"
+                            className="card"
                             {...fadeUp}
-                            transition={{ duration: 0.5, delay: i * 0.08 }}
-                            style={{ padding: "32px 28px" }}
+                            transition={{ duration: 0.5, delay: i * 0.07 }}
+                            style={{
+                                padding: "36px 32px",
+                                border: "none",
+                                borderRight: "1px solid var(--border)",
+                                borderBottom: "1px solid var(--border)",
+                                borderRadius: 0,
+                            }}
+                            onMouseEnter={(e) => {
+                                (e.currentTarget as HTMLElement).style.background = "rgba(201,185,122,0.05)";
+                            }}
+                            onMouseLeave={(e) => {
+                                (e.currentTarget as HTMLElement).style.background = "var(--bg-card)";
+                            }}
                         >
-                            <div
-                                style={{
-                                    width: 48,
-                                    height: 48,
-                                    borderRadius: 14,
-                                    background: `${feat.color}18`,
-                                    border: `1px solid ${feat.color}30`,
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    marginBottom: 20,
-                                }}
-                            >
-                                <feat.icon size={22} color={feat.color} />
-                            </div>
+                            <feat.icon
+                                size={18}
+                                color="var(--accent)"
+                                style={{ marginBottom: 20, opacity: 0.8 }}
+                            />
                             <h3
                                 style={{
-                                    fontSize: 17,
-                                    fontWeight: 700,
+                                    fontSize: 16,
+                                    fontWeight: 400,
                                     marginBottom: 10,
-                                    color: "#f8fafc",
-                                    fontFamily: "'Space Grotesk', sans-serif",
+                                    color: "var(--text-primary)",
+                                    fontFamily: "'Instrument Serif', serif",
                                 }}
                             >
                                 {feat.title}
                             </h3>
                             <p
                                 style={{
-                                    fontSize: 14,
+                                    fontSize: 13,
                                     color: "var(--text-secondary)",
-                                    lineHeight: 1.7,
+                                    lineHeight: 1.75,
+                                    fontWeight: 300,
                                 }}
                             >
                                 {feat.desc}

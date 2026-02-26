@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Cpu, Server, CheckCircle2, ArrowRight, Loader2 } from "lucide-react";
+import { CheckCircle2, ArrowRight, Loader2, Cpu, Server } from "lucide-react";
 
 const fadeUp = {
-    initial: { opacity: 0, y: 30 },
+    initial: { opacity: 0, y: 24 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true },
-    transition: { duration: 0.6 },
+    transition: { duration: 0.7 },
 };
 
 type Role = "client" | "provider";
@@ -19,7 +19,6 @@ function WaitlistCard({
     icon: Icon,
     title,
     subtitle,
-    accent,
     perks,
 }: {
     id: string;
@@ -27,7 +26,6 @@ function WaitlistCard({
     icon: React.ElementType;
     title: string;
     subtitle: string;
-    accent: string;
     perks: string[];
 }) {
     const [email, setEmail] = useState("");
@@ -38,12 +36,11 @@ function WaitlistCard({
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-            setError("Please enter a valid email address.");
+            setError("Enter a valid email address.");
             return;
         }
         setError("");
         setLoading(true);
-        // Simulate API call
         await new Promise((r) => setTimeout(r, 1200));
         setLoading(false);
         setSubmitted(true);
@@ -53,69 +50,64 @@ function WaitlistCard({
         <motion.div
             id={id}
             {...fadeUp}
-            className="glass-card animated-border"
+            className="card"
             style={{
-                padding: "40px 36px",
                 flex: 1,
                 minWidth: 300,
-                maxWidth: 520,
+                maxWidth: 500,
+                padding: "40px 36px",
             }}
         >
             {/* Header */}
-            <div
-                style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 14,
-                    marginBottom: 24,
-                }}
-            >
+            <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 28 }}>
                 <div
                     style={{
-                        width: 52,
-                        height: 52,
-                        borderRadius: 14,
-                        background: accent,
+                        width: 40,
+                        height: 40,
+                        border: "1px solid var(--accent-border)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         flexShrink: 0,
                     }}
                 >
-                    <Icon size={24} color="white" />
+                    <Icon size={18} color="var(--accent)" />
                 </div>
                 <div>
                     <h3
                         style={{
-                            fontFamily: "'Space Grotesk', sans-serif",
-                            fontWeight: 700,
+                            fontFamily: "'Instrument Serif', serif",
+                            fontWeight: 400,
                             fontSize: 20,
-                            color: "#f8fafc",
+                            color: "var(--text-primary)",
+                            marginBottom: 4,
                         }}
                     >
                         {title}
                     </h3>
-                    <p style={{ fontSize: 14, color: "var(--text-secondary)" }}>
+                    <p style={{ fontSize: 12, color: "var(--text-muted)", fontWeight: 300 }}>
                         {subtitle}
                     </p>
                 </div>
             </div>
 
             {/* Perks */}
-            <ul style={{ listStyle: "none", marginBottom: 28 }}>
+            <ul style={{ listStyle: "none", marginBottom: 32 }}>
                 {perks.map((perk) => (
                     <li
                         key={perk}
                         style={{
                             display: "flex",
-                            alignItems: "center",
+                            alignItems: "flex-start",
                             gap: 10,
                             marginBottom: 10,
-                            fontSize: 14,
+                            fontSize: 13,
                             color: "var(--text-secondary)",
+                            fontWeight: 300,
+                            lineHeight: 1.5,
                         }}
                     >
-                        <CheckCircle2 size={15} color="#22c55e" />
+                        <CheckCircle2 size={14} color="var(--accent)" style={{ marginTop: 2, flexShrink: 0, opacity: 0.8 }} />
                         {perk}
                     </li>
                 ))}
@@ -124,40 +116,28 @@ function WaitlistCard({
             {/* Form */}
             {submitted ? (
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
+                    initial={{ opacity: 0, scale: 0.97 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    style={{
-                        textAlign: "center",
-                        padding: "24px 0",
-                    }}
+                    style={{ textAlign: "center", padding: "20px 0" }}
                 >
                     <div
                         style={{
-                            width: 56,
-                            height: 56,
-                            borderRadius: "50%",
-                            background: "rgba(34, 197, 94, 0.1)",
-                            border: "1px solid rgba(34, 197, 94, 0.3)",
+                            width: 48,
+                            height: 48,
+                            border: "1px solid var(--accent-border)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
                             margin: "0 auto 16px",
                         }}
                     >
-                        <CheckCircle2 size={28} color="#22c55e" />
+                        <CheckCircle2 size={22} color="var(--accent)" />
                     </div>
-                    <p
-                        style={{
-                            fontWeight: 700,
-                            fontSize: 16,
-                            color: "#f8fafc",
-                            marginBottom: 8,
-                        }}
-                    >
-                        You&apos;re on the list! 🎉
+                    <p style={{ fontFamily: "'Instrument Serif', serif", fontSize: 18, color: "var(--text-primary)", marginBottom: 8 }}>
+                        You&apos;re on the list.
                     </p>
-                    <p style={{ fontSize: 14, color: "var(--text-secondary)" }}>
-                        We&apos;ll reach out as soon as your early access slot opens.
+                    <p style={{ fontSize: 13, color: "var(--text-secondary)", fontWeight: 300 }}>
+                        We&apos;ll reach out when your access slot opens.
                     </p>
                 </motion.div>
             ) : (
@@ -166,13 +146,13 @@ function WaitlistCard({
                         type="email"
                         id={`email-${role}`}
                         className="input-field"
-                        placeholder="Enter your email address"
+                        placeholder="your@email.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        style={{ marginBottom: error ? 6 : 12 }}
+                        style={{ marginBottom: error ? 8 : 12 }}
                     />
                     {error && (
-                        <p style={{ fontSize: 13, color: "#f87171", marginBottom: 12 }}>
+                        <p style={{ fontSize: 12, color: "#e07070", marginBottom: 12, fontWeight: 300 }}>
                             {error}
                         </p>
                     )}
@@ -187,10 +167,10 @@ function WaitlistCard({
                         }}
                     >
                         {loading ? (
-                            <Loader2 size={18} style={{ animation: "spin 1s linear infinite" }} />
+                            <Loader2 size={16} style={{ animation: "spin 1s linear infinite" }} />
                         ) : (
                             <>
-                                Reserve My Spot <ArrowRight size={16} />
+                                Reserve My Spot <ArrowRight size={14} />
                             </>
                         )}
                     </button>
@@ -210,36 +190,37 @@ export default function WaitlistSection() {
             className="section-padding"
             style={{ position: "relative" }}
         >
+            <div className="divider" />
+
             <div className="container-xl">
                 {/* Section header */}
                 <motion.div
                     {...fadeUp}
-                    style={{ textAlign: "center", marginBottom: 64 }}
+                    style={{ textAlign: "center", paddingTop: 80, marginBottom: 72 }}
                 >
-                    <div className="badge" style={{ display: "inline-flex" }}>
-                        🔐 Limited early access
-                    </div>
+                    <div className="label" style={{ marginBottom: 20 }}>Early Access</div>
                     <h2
                         style={{
-                            fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
-                            fontWeight: 800,
-                            marginBottom: 16,
+                            fontSize: "clamp(2rem, 4.5vw, 3.2rem)",
+                            fontWeight: 400,
+                            marginBottom: 20,
+                            lineHeight: 1.1,
                         }}
                     >
                         Join the{" "}
-                        <span className="gradient-text">Early Adopter</span> Waitlist
+                        <em style={{ fontStyle: "italic", color: "var(--accent)" }}>waitlist.</em>
                     </h2>
                     <p
                         style={{
-                            fontSize: 17,
+                            fontSize: 15,
                             color: "var(--text-secondary)",
-                            maxWidth: 520,
+                            maxWidth: 480,
                             margin: "0 auto",
-                            lineHeight: 1.7,
+                            lineHeight: 1.75,
+                            fontWeight: 300,
                         }}
                     >
-                        We&apos;re onboarding a select group of clients and compute providers
-                        before our public launch. Pick your role below.
+                        Join our foundation cohort. Early adopters receive exclusive lifetime benefits, zero-fee trading for 12 months, and priority support.
                     </p>
                 </motion.div>
 
@@ -247,7 +228,7 @@ export default function WaitlistSection() {
                 <div
                     style={{
                         display: "flex",
-                        gap: 32,
+                        gap: 24,
                         justifyContent: "center",
                         flexWrap: "wrap",
                     }}
@@ -256,28 +237,26 @@ export default function WaitlistSection() {
                         id="waitlist-client"
                         role="client"
                         icon={Cpu}
-                        title="I Need Compute"
-                        subtitle="Access affordable, scalable compute on demand"
-                        accent="linear-gradient(135deg, #3b82f6, #7c3aed)"
+                        title="I Need Power"
+                        subtitle="Rent GPUs for training or rendering on a minimal budget."
                         perks={[
-                            "Priority access to early inventory",
-                            "Up to 70% off vs. major cloud providers",
-                            "Dedicated onboarding support",
-                            "Locked-in early-adopter pricing forever",
+                            "0% platform fees for your first 12 months",
+                            "Free tier priority for high-demand nodes",
+                            "Exclusive 'Founding Client' profile badge",
+                            "Locked-in early adopter rates for life",
                         ]}
                     />
                     <WaitlistCard
                         id="waitlist-provider"
                         role="provider"
                         icon={Server}
-                        title="I Have Compute"
-                        subtitle="Monetize your idle GPUs, CPUs, or data center capacity"
-                        accent="linear-gradient(135deg, #06b6d4, #3b82f6)"
+                        title="I Have a PC"
+                        subtitle="Turn your idle GPU/CPU into passive income today."
                         perks={[
-                            "Start earning from day one of launch",
-                            "Set your own availability & pricing",
-                            "Automated billing & instant payouts",
-                            "Provider dashboard with real-time analytics",
+                            "Double earning multipliers for launch month",
+                            "Instant UPI payouts with zero withdrawal fees",
+                            "Complimentary hardware health audit service",
+                            "Priority listing in the global directory",
                         ]}
                     />
                 </div>

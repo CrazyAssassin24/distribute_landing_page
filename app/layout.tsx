@@ -2,21 +2,19 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "ComputeLink — Connect Idle Compute to Real Demand",
+  title: "Distribute — The Compute Marketplace",
   description:
-    "ComputeLink is the marketplace that connects people with spare compute power to developers, researchers, and teams who need it — cheaply, instantly, and securely.",
+    "Distribute connects idle compute to real demand. Earn from your hardware or access affordable GPU and CPU power on demand.",
   keywords: [
     "compute marketplace",
     "rent GPU",
     "distributed computing",
     "sell compute power",
     "AI compute",
-    "cloud GPU",
   ],
   openGraph: {
-    title: "ComputeLink — Connect Idle Compute to Real Demand",
-    description:
-      "The marketplace that matches spare compute with real demand. Join the waitlist today.",
+    title: "Distribute — The Compute Marketplace",
+    description: "Idle compute, put to work.",
     type: "website",
   },
 };

@@ -1,57 +1,59 @@
 "use client";
 
-import { Zap, Twitter, Github, Linkedin, ArrowRight } from "lucide-react";
+import { Twitter, Github, Linkedin, ArrowRight } from "lucide-react";
 
 export default function Footer() {
     return (
         <footer
             style={{
                 borderTop: "1px solid var(--border)",
-                background: "var(--bg-primary)",
-                padding: "60px 24px 32px",
+                padding: "72px 32px 40px",
+                position: "relative",
+                zIndex: 1,
             }}
         >
             <div className="container-xl">
                 {/* CTA strip */}
                 <div
                     style={{
-                        borderRadius: 24,
-                        background: "linear-gradient(135deg, rgba(59,130,246,0.12), rgba(124,58,237,0.12))",
-                        border: "1px solid rgba(59,130,246,0.2)",
-                        padding: "48px 32px",
+                        borderTop: "1px solid var(--border)",
+                        borderBottom: "1px solid var(--border)",
+                        padding: "64px 32px",
                         textAlign: "center",
                         marginBottom: 56,
                     }}
                 >
                     <h2
                         style={{
-                            fontFamily: "'Space Grotesk', sans-serif",
-                            fontWeight: 800,
-                            fontSize: "clamp(1.4rem, 3vw, 2.2rem)",
-                            marginBottom: 12,
+                            fontFamily: "'Instrument Serif', serif",
+                            fontWeight: 400,
+                            fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)",
+                            marginBottom: 16,
+                            lineHeight: 1.1,
                         }}
                     >
-                        Ready to transform how the world uses compute?
+                        Ready to join the<br />
+                        <em style={{ fontStyle: "italic", color: "var(--accent)" }}>future of compute?</em>
                     </h2>
                     <p
                         style={{
                             color: "var(--text-secondary)",
-                            fontSize: 16,
-                            marginBottom: 28,
-                            maxWidth: 440,
-                            margin: "0 auto 28px",
-                            lineHeight: 1.6,
+                            fontSize: 14,
+                            marginBottom: 32,
+                            maxWidth: 420,
+                            margin: "0 auto 32px",
+                            lineHeight: 1.75,
+                            fontWeight: 300,
                         }}
                     >
-                        Join thousands of early adopters already on our waitlist.
-                        Spots are limited — lock in your early-adopter perks today.
+                        Whether you&apos;re a student looking for GPU power or a gamer with an idle PC, Distribute is built for you. No contracts, no gatekeeping.
                     </p>
                     <a
                         href="#waitlist"
-                        className="btn-primary glow-blue"
+                        className="btn-primary"
                         style={{ textDecoration: "none" }}
                     >
-                        Join the Waitlist <ArrowRight size={16} />
+                        Join the Waitlist <ArrowRight size={14} />
                     </a>
                 </div>
 
@@ -59,54 +61,42 @@ export default function Footer() {
                 <div
                     style={{
                         display: "flex",
-                        justifyContent: "space-between",
+                        flexDirection: "column",
                         alignItems: "center",
-                        flexWrap: "wrap",
-                        gap: 20,
+                        textAlign: "center",
+                        gap: 32,
                     }}
                 >
-                    {/* Logo + tagline */}
-                    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                        <div
-                            style={{
-                                width: 32,
-                                height: 32,
-                                borderRadius: 9,
-                                background: "linear-gradient(135deg, #3b82f6, #7c3aed)",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                            }}
-                        >
-                            <Zap size={16} color="white" fill="white" />
-                        </div>
-                        <span
-                            style={{
-                                fontFamily: "'Space Grotesk', sans-serif",
-                                fontWeight: 700,
-                                fontSize: 17,
-                                color: "#f8fafc",
-                            }}
-                        >
-                            Compute<span className="gradient-text">Link</span>
-                        </span>
-                    </div>
+                    {/* Logo */}
+                    <span
+                        style={{
+                            fontFamily: "'Instrument Serif', serif",
+                            fontWeight: 400,
+                            fontSize: 22,
+                            color: "var(--text-primary)",
+                            letterSpacing: "0.04em",
+                        }}
+                    >
+                        distribute
+                    </span>
 
                     {/* Links */}
-                    <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
-                        {["Privacy Policy", "Terms of Service", "Contact Us"].map((l) => (
+                    <div style={{ display: "flex", gap: 32, flexWrap: "wrap", justifyContent: "center" }}>
+                        {["Privacy Policy", "Terms of Service", "Contact"].map((l) => (
                             <a
                                 key={l}
                                 href="#"
                                 style={{
-                                    fontSize: 13,
+                                    fontSize: 11,
+                                    fontWeight: 500,
+                                    letterSpacing: "0.1em",
+                                    textTransform: "uppercase",
                                     color: "var(--text-muted)",
                                     textDecoration: "none",
                                     transition: "color 0.2s",
                                 }}
                                 onMouseEnter={(e) =>
-                                ((e.target as HTMLElement).style.color =
-                                    "var(--text-secondary)")
+                                    ((e.target as HTMLElement).style.color = "var(--text-secondary)")
                                 }
                                 onMouseLeave={(e) =>
                                     ((e.target as HTMLElement).style.color = "var(--text-muted)")
@@ -118,7 +108,7 @@ export default function Footer() {
                     </div>
 
                     {/* Socials */}
-                    <div style={{ display: "flex", gap: 12 }}>
+                    <div style={{ display: "flex", gap: 12, justifyContent: "center" }}>
                         {[
                             { Icon: Twitter, label: "Twitter" },
                             { Icon: Github, label: "GitHub" },
@@ -129,9 +119,8 @@ export default function Footer() {
                                 href="#"
                                 aria-label={label}
                                 style={{
-                                    width: 36,
-                                    height: 36,
-                                    borderRadius: 10,
+                                    width: 38,
+                                    height: 38,
                                     border: "1px solid var(--border)",
                                     display: "flex",
                                     alignItems: "center",
@@ -142,8 +131,8 @@ export default function Footer() {
                                 }}
                                 onMouseEnter={(e) => {
                                     const el = e.currentTarget as HTMLElement;
-                                    el.style.borderColor = "var(--border-accent)";
-                                    el.style.color = "var(--accent-blue)";
+                                    el.style.borderColor = "var(--accent-border)";
+                                    el.style.color = "var(--accent)";
                                 }}
                                 onMouseLeave={(e) => {
                                     const el = e.currentTarget as HTMLElement;
@@ -160,13 +149,15 @@ export default function Footer() {
                 <p
                     style={{
                         textAlign: "center",
-                        fontSize: 13,
+                        fontSize: 10,
+                        fontWeight: 400,
+                        letterSpacing: "0.08em",
                         color: "var(--text-muted)",
-                        marginTop: 32,
+                        marginTop: 48,
+                        textTransform: "uppercase",
                     }}
                 >
-                    © {new Date().getFullYear()} ComputeLink, Inc. All rights reserved.
-                    Made with ⚡ for the builders.
+                    &copy; {new Date().getFullYear()} Distribute, Inc. All rights reserved.
                 </p>
             </div>
         </footer>

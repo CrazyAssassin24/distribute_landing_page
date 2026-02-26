@@ -1,236 +1,132 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Play, X } from "lucide-react";
 
 const steps = [
     {
         num: "01",
-        title: "List or Browse",
-        desc: "Providers list available hardware with specs, pricing, and availability windows. Clients search and filter for exactly what they need.",
-        color: "#3b82f6",
+        title: "Connect & Earn",
+        desc: "Turn on the agent on your gaming PC or laptop. We handle the discovery and matching for you.",
     },
     {
         num: "02",
-        title: "Match & Verify",
-        desc: "Our engine matches demand with supply in real time. Both sides are verified and hardware is benchmarked before any job runs.",
-        color: "#7c3aed",
+        title: "Search & Select",
+        desc: "Find the exact GPU or CPU power you need at a price that fits your student or hobbyist budget.",
     },
     {
         num: "03",
-        title: "Provision in Seconds",
-        desc: "Clients receive secure SSH or API access to their allocated compute. Workloads run in isolated containers with guaranteed QoS.",
-        color: "#06b6d4",
+        title: "Deploy Instantly",
+        desc: "Get instant secure access via SSH or Jupyter. Scale up or down without any long-term contracts.",
     },
     {
         num: "04",
-        title: "Pay & Get Paid",
-        desc: "Usage is metered to the second. Clients pay only for runtime; providers receive automated payouts weekly to their account.",
-        color: "#22c55e",
+        title: "Seamless Payouts",
+        desc: "Providers get paid instantly via UPI. Users only pay for the exact seconds the job is running.",
     },
 ];
 
 const fadeUp = {
-    initial: { opacity: 0, y: 30 },
+    initial: { opacity: 0, y: 24 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-50px" },
+    viewport: { once: true, margin: "-40px" },
 };
 
 export default function HowItWorksSection() {
-    const [videoOpen, setVideoOpen] = useState(false);
-
     return (
         <section
             id="how-it-works"
             className="section-padding"
-            style={{ position: "relative", overflow: "hidden" }}
+            style={{ position: "relative" }}
         >
-            {/* Top gradient divider */}
-            <div className="gradient-divider" />
+            <div className="divider" />
 
-            <div
-                className="container-xl"
-                style={{ position: "relative", zIndex: 1, paddingTop: 80 }}
-            >
+            <div className="container-xl">
+                {/* Header */}
                 <motion.div
                     {...fadeUp}
-                    transition={{ duration: 0.6 }}
-                    style={{ textAlign: "center", marginBottom: 64 }}
+                    transition={{ duration: 0.7 }}
+                    style={{ textAlign: "center", paddingTop: 80, marginBottom: 80 }}
                 >
-                    <div className="badge" style={{ display: "inline-flex" }}>
-                        🎬 See it in action
-                    </div>
+                    <div className="label" style={{ marginBottom: 20 }}>Process</div>
                     <h2
                         style={{
-                            fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
-                            fontWeight: 800,
-                            marginBottom: 16,
+                            fontSize: "clamp(2rem, 4.5vw, 3.2rem)",
+                            fontWeight: 400,
+                            marginBottom: 20,
+                            lineHeight: 1.1,
                         }}
                     >
-                        How <span className="gradient-text">ComputeLink</span> Works
+                        From idle to{" "}
+                        <em style={{ fontStyle: "italic", color: "var(--accent)" }}>earning in minutes.</em>
                     </h2>
                     <p
                         style={{
-                            fontSize: 17,
+                            fontSize: 15,
                             color: "var(--text-secondary)",
-                            maxWidth: 520,
+                            maxWidth: 440,
                             margin: "0 auto",
-                            lineHeight: 1.7,
+                            lineHeight: 1.75,
+                            fontWeight: 300,
                         }}
                     >
-                        From listing spare hardware to spinning up a training cluster —
-                        the whole journey takes under two minutes.
+                        The entire journey — from listing hardware to deploying a training cluster — takes under two minutes.
                     </p>
                 </motion.div>
 
-                {/* Video player */}
-                <motion.div
-                    {...fadeUp}
-                    transition={{ duration: 0.7, delay: 0.1 }}
-                    className="float-animation"
-                    style={{ marginBottom: 80 }}
-                >
-                    <div
-                        className="video-container"
-                        style={{
-                            maxWidth: 860,
-                            margin: "0 auto",
-                            background:
-                                "linear-gradient(135deg, rgba(59,130,246,0.1), rgba(124,58,237,0.1))",
-                            border: "1px solid rgba(59,130,246,0.2)",
-                            cursor: "pointer",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            minHeight: 420,
-                            position: "relative",
-                            borderRadius: 24,
-                            overflow: "hidden",
-                        }}
-                        onClick={() => setVideoOpen(true)}
-                    >
-                        {/* Gradient shimmer */}
-                        <div
-                            style={{
-                                position: "absolute",
-                                inset: 0,
-                                background:
-                                    "radial-gradient(ellipse 70% 70% at 50% 50%, rgba(59,130,246,0.08) 0%, transparent 60%)",
-                            }}
-                        />
-                        {/* Grid lines */}
-                        <div
-                            className="grid-bg"
-                            style={{ position: "absolute", inset: 0, opacity: 0.4 }}
-                        />
-
-                        {/* Play button */}
-                        <div style={{ position: "relative", zIndex: 2, textAlign: "center" }}>
-                            <motion.div
-                                whileHover={{ scale: 1.08 }}
-                                whileTap={{ scale: 0.96 }}
-                                style={{
-                                    width: 84,
-                                    height: 84,
-                                    borderRadius: "50%",
-                                    background: "linear-gradient(135deg, #3b82f6, #7c3aed)",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    margin: "0 auto 20px",
-                                    boxShadow:
-                                        "0 0 40px rgba(59, 130, 246, 0.6), 0 0 80px rgba(59, 130, 246, 0.3)",
-                                }}
-                            >
-                                <Play size={34} color="white" fill="white" />
-                            </motion.div>
-                            <p
-                                style={{
-                                    fontSize: 16,
-                                    fontWeight: 600,
-                                    color: "#f8fafc",
-                                    marginBottom: 6,
-                                }}
-                            >
-                                Watch the 90-second demo
-                            </p>
-                            <p style={{ fontSize: 14, color: "var(--text-secondary)" }}>
-                                See how providers list and clients deploy in real time
-                            </p>
-                        </div>
-
-                        {/* Corner labels (simulated UI elements) */}
-                        {[
-                            { top: 20, left: 20, label: "GPU Node A100 · Active" },
-                            { top: 20, right: 20, label: "Latency 18 ms" },
-                            { bottom: 20, left: 20, label: "Cost: $0.42/hr" },
-                            { bottom: 20, right: 20, label: "Utilization 94%" },
-                        ].map((el, i) => (
-                            <div
-                                key={i}
-                                className="stat-pill"
-                                style={{
-                                    position: "absolute",
-                                    ...(el.top !== undefined ? { top: el.top } : { bottom: el.bottom }),
-                                    ...(el.left !== undefined ? { left: el.left } : { right: el.right }),
-                                    fontSize: 12,
-                                }}
-                            >
-                                {el.label}
-                            </div>
-                        ))}
-                    </div>
-                </motion.div>
-
-                {/* Step-by-step */}
+                {/* Steps grid */}
                 <div
                     style={{
                         display: "grid",
                         gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-                        gap: 24,
-                        position: "relative",
+                        gap: 0,
+                        border: "1px solid var(--border)",
                     }}
                 >
                     {steps.map((step, i) => (
                         <motion.div
                             key={step.num}
-                            className="glass-card"
+                            className="card"
                             {...fadeUp}
                             transition={{ duration: 0.5, delay: i * 0.1 }}
-                            style={{ padding: "28px 24px" }}
+                            style={{
+                                padding: "40px 32px",
+                                border: "none",
+                                borderRight: "1px solid var(--border)",
+                                borderRadius: 0,
+                            }}
                         >
+                            {/* Step number */}
                             <div
                                 style={{
-                                    fontSize: 40,
-                                    fontWeight: 800,
-                                    fontFamily: "'Space Grotesk', sans-serif",
-                                    background: `linear-gradient(135deg, ${step.color}, ${step.color}66)`,
-                                    WebkitBackgroundClip: "text",
-                                    WebkitTextFillColor: "transparent",
-                                    backgroundClip: "text",
-                                    marginBottom: 12,
-                                    lineHeight: 1,
+                                    fontSize: 11,
+                                    fontWeight: 500,
+                                    letterSpacing: "0.16em",
+                                    textTransform: "uppercase",
+                                    color: "var(--accent)",
+                                    marginBottom: 24,
+                                    opacity: 0.7,
                                 }}
                             >
                                 {step.num}
                             </div>
                             <h3
                                 style={{
-                                    fontSize: 16,
-                                    fontWeight: 700,
-                                    marginBottom: 10,
-                                    color: "#f8fafc",
-                                    fontFamily: "'Space Grotesk', sans-serif",
+                                    fontSize: 18,
+                                    fontWeight: 400,
+                                    marginBottom: 12,
+                                    color: "var(--text-primary)",
+                                    fontFamily: "'Instrument Serif', serif",
+                                    lineHeight: 1.2,
                                 }}
                             >
                                 {step.title}
                             </h3>
                             <p
                                 style={{
-                                    fontSize: 14,
+                                    fontSize: 13,
                                     color: "var(--text-secondary)",
-                                    lineHeight: 1.7,
+                                    lineHeight: 1.75,
+                                    fontWeight: 300,
                                 }}
                             >
                                 {step.desc}
@@ -239,68 +135,6 @@ export default function HowItWorksSection() {
                     ))}
                 </div>
             </div>
-
-            {/* Video modal */}
-            {videoOpen && (
-                <div
-                    style={{
-                        position: "fixed",
-                        inset: 0,
-                        zIndex: 9999,
-                        background: "rgba(0,0,0,0.9)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        padding: 24,
-                    }}
-                    onClick={() => setVideoOpen(false)}
-                >
-                    <motion.div
-                        initial={{ scale: 0.9, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        style={{
-                            width: "100%",
-                            maxWidth: 900,
-                            position: "relative",
-                            borderRadius: 20,
-                            overflow: "hidden",
-                            aspectRatio: "16/9",
-                            background: "#000",
-                        }}
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        <iframe
-                            width="100%"
-                            height="100%"
-                            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
-                            title="ComputeLink Demo Video"
-                            allow="autoplay; encrypted-media"
-                            allowFullScreen
-                            style={{ border: "none", display: "block" }}
-                        />
-                        <button
-                            onClick={() => setVideoOpen(false)}
-                            style={{
-                                position: "absolute",
-                                top: 12,
-                                right: 12,
-                                background: "rgba(0,0,0,0.7)",
-                                border: "1px solid rgba(255,255,255,0.2)",
-                                borderRadius: "50%",
-                                width: 36,
-                                height: 36,
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                cursor: "pointer",
-                                color: "white",
-                            }}
-                        >
-                            <X size={18} />
-                        </button>
-                    </motion.div>
-                </div>
-            )}
         </section>
     );
 }
