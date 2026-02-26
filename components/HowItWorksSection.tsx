@@ -6,22 +6,22 @@ const steps = [
     {
         num: "01",
         title: "Connect & Earn",
-        desc: "Turn on the agent on your gaming PC or laptop. We handle the discovery and matching for you.",
+        desc: "Run the agent on your gaming PC or laptop. We handle the discovery and matching for you.",
     },
     {
         num: "02",
         title: "Search & Select",
-        desc: "Find the exact GPU or CPU power you need at a price that fits your student or hobbyist budget.",
+        desc: "Find the exact GPU or CPU power you need at a price that fits your budget.",
     },
     {
         num: "03",
         title: "Deploy Instantly",
-        desc: "Get instant secure access via SSH or Jupyter. Scale up or down without any long-term contracts.",
+        desc: "Get instant secure access to machines via SSH. Scale up or down without any long-term contracts.",
     },
     {
         num: "04",
         title: "Seamless Payouts",
-        desc: "Providers get paid instantly via UPI. Users only pay for the exact seconds the job is running.",
+        desc: "Providers get paid instantly via UPI or stripe. Users only pay for the exact seconds the job is running.",
     },
 ];
 

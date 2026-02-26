@@ -12,7 +12,7 @@ const fadeUp = {
 const highlights = [
     { value: "< 2 min", label: "Cluster Provisioning" },
     { value: "50%+", label: "Cost vs. Cloud" },
-    { value: "RTX 5090", label: "SOTA GPU Access" },
+    { value: "RTX 5090s", label: "SOTA GPU Access" },
 ];
 
 const spotlightCards = [
@@ -38,8 +38,8 @@ const detailCards = [
     {
         icon: Cpu,
         label: "SOTA Hardware",
-        title: "RTX 5090 & H100 Clusters",
-        desc: "Access the latest 50-series GPUs and datacenter-grade H100 nodes from a globally distributed network of providers.",
+        title: "RTX Cards and Server Clusters",
+        desc: "Access the latest 50-series GPUs and datacenter-grade gpu nodes from a globally distributed network of providers.",
     },
     {
         icon: BarChart3,
@@ -65,7 +65,7 @@ export default function PerformanceSection() {
                     transition={{ duration: 0.7 }}
                     style={{ textAlign: "center", paddingTop: 80, marginBottom: 64 }}
                 >
-                    <div className="label" style={{ marginBottom: 20 }}>High Performance</div>
+                    <div className="label" style={{ marginBottom: 20 }}>Performance</div>
                     <h2
                         style={{
                             fontSize: "clamp(2.2rem, 5vw, 3.8rem)",
@@ -76,7 +76,7 @@ export default function PerformanceSection() {
                     >
                         The fastest path from idea{" "}
                         <br />
-                        <em style={{ fontStyle: "italic", color: "var(--accent)" }}>to trained model.</em>
+                        <em style={{ fontStyle: "italic", color: "var(--accent)" }}>to production.</em>
                     </h2>
                 </motion.div>
 
@@ -107,8 +107,8 @@ export default function PerformanceSection() {
                                 fontWeight: 400,
                             }}
                         >
-                            Spin up a cluster of{" "}
-                            <em style={{ color: "var(--accent)", fontStyle: "italic" }}>RTX 5090s</em>{" "}
+                            Spin up {" "}
+                            <em style={{ color: "var(--accent)", fontStyle: "italic" }}> HPC Clusters</em>{" "}
                             and train a production-grade LLM in{" "}
                             <em style={{ color: "var(--accent)", fontStyle: "italic" }}>under 2 minutes</em>{" "}
                             — at a fraction of what AWS charges.
