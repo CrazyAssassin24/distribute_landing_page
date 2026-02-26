@@ -20,7 +20,7 @@ const spotlightCards = [
         icon: Zap,
         label: "Speed",
         watermark: "2m",
-        title: "Train an LLM in under 2 minutes.",
+        title: "Set up LLM training in under 2 minutes.",
         desc: "From zero to running first epoch — no queues, no approvals, no cold starts. Our global peer network provisions clusters faster than any hyperscaler's control plane.",
         tag: "Provisioning in < 120s",
     },
@@ -109,7 +109,7 @@ export default function PerformanceSection() {
                         >
                             Spin up {" "}
                             <em style={{ color: "var(--accent)", fontStyle: "italic" }}> HPC Clusters</em>{" "}
-                            and train a production-grade LLM in{" "}
+                            and start training a production-grade LLM in{" "}
                             <em style={{ color: "var(--accent)", fontStyle: "italic" }}>under 2 minutes</em>{" "}
                             — at a fraction of what AWS charges.
                         </p>

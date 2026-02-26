@@ -338,9 +338,8 @@ export default function WaitlistSection() {
                         title="I want GPU power"
                         subtitle="Run AI models, fine-tune LLMs, and render projects — without paying AWS prices."
                         perks={[
-                            "No platform fees for your entire first year — keep every rupee you save",
+                            "No platform fees for six months",
                             "Jump the queue — early members get first pick of the best GPUs at launch",
-                            "Your price is locked in forever, even as demand grows",
                             "Cancel any session instantly — you only pay for the seconds you actually use",
                         ]}
                     />
@@ -351,8 +350,8 @@ export default function WaitlistSection() {
                         title="I have a gaming PC"
                         subtitle="Your GPU sits idle most of the day. Let it earn money while you sleep, game, or study."
                         perks={[
-                            "Earn 2× the normal rate during the entire launch month",
-                            "Get paid instantly to your UPI — no waiting, no minimum withdrawal",
+                            "Earn 1.5× the normal rate during the entire launch month",
+                            "Get paid instantly to your UPI/Stripe — no waiting, no minimum withdrawal",
                             "We handle all the networking and security — you just leave it on",
                             "Your listing appears at the top of search results before anyone else's",
                         ]}

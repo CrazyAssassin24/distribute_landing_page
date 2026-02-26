@@ -110,9 +110,9 @@ export default function Footer() {
                     {/* Socials */}
                     <div style={{ display: "flex", gap: 12, justifyContent: "center" }}>
                         {[
-                            { Icon: Twitter, label: "Twitter" },
-                            { Icon: Github, label: "GitHub" },
-                            { Icon: Linkedin, label: "LinkedIn" },
+                            { Icon: Twitter, label: "X" },
+                            // { Icon: Github, label: "GitHub" },
+                            // { Icon: Linkedin, label: "LinkedIn" },
                         ].map(({ Icon, label }) => (
                             <a
                                 key={label}
